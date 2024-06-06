@@ -6,34 +6,37 @@ namespace GeradorDeJogosLoteria
     {
         static void Main(string[] args)
         {
+            Console.Clear();
+            
+            Double[] ordemCrescente=new double[6];
             Random random = new Random();
- Console.WriteLine();
-            Console.WriteLine("Bem-vindo ao gerador de jogos da loteria!");
- Console.WriteLine();
-            Console.Write("Quantos jogos você deseja gerar (até 10)? ");
+
+            Console.WriteLine("\nBem-vindo ao gerador de jogos da loteria!");
+
+            Console.Write("\nQuantos jogos você deseja gerar? ");
             int quantidadeDeJogos = int.Parse(Console.ReadLine()!);
- 
-            if (quantidadeDeJogos > 10)
-            {
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Desculpe, só é possível gerar até 10 jogos. *DIGITE UM NÚMERO VÁLIDO!*");
-                Console.ResetColor();
-                Console.WriteLine();
-                return;
-                
-                               
-            }
- 
+             
             for (int i = 1; i <= quantidadeDeJogos; i++)
             {
                 Console.Write($"\nJogo {i}: ");
                 var numerosSorteados=new HashSet<int>();
-                for (int j = 1; j <= 6; j++)
+                
+                for (int j = 0; j < 6; j++)
                 {
-                    Console.Write($"{random.Next(1, 61)} ");
+                    ordemCrescente[j]=random.Next(1, 61);
+                }
+                for(int j = 1;j < 61; j++)
+                {
+                    for(int k=0;k<6;k++)
+                    {
+                    if(j==ordemCrescente[k])
+                    {
+                        Console.Write(j+" ");
+                    }
+                    }
                 }
             }
+            Console.WriteLine("\n");
         }
     }
 
