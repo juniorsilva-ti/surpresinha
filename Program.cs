@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
  
 namespace GeradorDeJogosLoteria
 {
@@ -16,15 +16,19 @@ namespace GeradorDeJogosLoteria
             if (quantidadeDeJogos > 10)
             {
                 Console.WriteLine();
-                Console.WriteLine("Desculpe, só é possível gerar até 10 jogos.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Desculpe, só é possível gerar até 10 jogos. *DIGITE UM NÚMERO VÁLIDO!*");
+                Console.ResetColor();
                 Console.WriteLine();
                 return;
                 
+                               
             }
  
             for (int i = 1; i <= quantidadeDeJogos; i++)
             {
                 Console.Write($"\nJogo {i}: ");
+                var numerosSorteados=new HashSet<int>();
                 for (int j = 1; j <= 6; j++)
                 {
                     Console.Write($"{random.Next(1, 61)} ");
@@ -32,4 +36,7 @@ namespace GeradorDeJogosLoteria
             }
         }
     }
-}
+
+    }
+
+    // Júnior Silva 
